@@ -19,13 +19,21 @@ I gave 1500 word vocab restriction, because it was significantly smaller than th
 ### Result table
 
 [(second,first)     , (first, second)    , (first,first)      , (second, second)]
+
 [0.30357529885236334, 0.30357529885236334, 0.3240299216019181, 0.36531232564334276]
+
 [0.32862536733396525, 0.3286253673339653, 0.3492089604886903, 0.39654289470942644]
+
 [0.06872875265934303, 0.06872875265934304, 0.09403037364003336, 0.10222264718406482]
+
 [0.10033975568893838, 0.10033975568893841, 0.13108127810035142, 0.1486086201759006]
+
 [0.4178184611383674, 0.4178184611383673, 0.45744361558047464, 0.4984540257419908]
+
 [0.30440337280563373, 0.3044033728056338, 0.3254864792156253, 0.3662826764078078]
+
 [0.16868623213183562, 0.16868623213183562, 0.21708604584884691, 0.24963759651007444]
+
 [0.06935471790835548, 0.06935471790835553, 0.09511954940612688, 0.10320479609964142]
 
 where first and second refer to the respective corpuses
@@ -41,12 +49,17 @@ I didn't expect the tf-ifd to decrease the cossine similarity, but this makes a 
 Important things to note in the data below:
 
 second == fine
+
 first == coarse
 
 Cossim is billinear and hence equal to its transpose ((first,second) == (second,first)).
+
 The both corpuses were uniformly more similair to themselves than to each other, and the second was uniformly more self similair than the first.
+
 Tfidf uniformly reduced the cosine similarity.
+
 SVD uniformly increased cosine similarity.
+
 
 ## Bonus answers
 
@@ -55,11 +68,13 @@ My answer is somewhat mixed, but the flaws are more or less contained in the fir
 I'll give two examples of utterences with the same vector representations and therefore are treated the same by the model.  
 
   'I love Donald Trump.  I hate Hillary Clinton.'
+
   'I love Hillary Clinton. I hate Donald Trump.'
 
 would have the same vector represenations, despite having "opposite" meanings.  In a different instance: 
 
   "The dog watched a man baking the cake." 
+
   "A man baking the dog watched the cake."
 
 which have completely independent, unrelated meanings would both receive the same vector representations in our model.
@@ -71,6 +86,7 @@ Other problems include time and space complexity.  The naive approach works beca
 Additionally, when discussing this to a class at stanford, Chris Manning says about one hot encodings :
 
   "no inherent notion of relationship between words"
+
   "onehot encodings have no natural notion of similarity"
 
 e.g. no natural semantic's exist b/c all vectors are orthogonal
